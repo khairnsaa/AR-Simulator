@@ -21,10 +21,6 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Admin Page */}
-                {/* <Route exact path='/' element={<AdminHomePage />} /> */}
-                {/* <Route exact path='/' element={<LoginRoute/>} >
-                </Route> */}
                 <Route exact path="/" element={
                     <LoginRouter>
                         <AdminHomePage />

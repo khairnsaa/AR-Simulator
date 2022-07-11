@@ -19,7 +19,7 @@ export const ArticleContextProvider = ({ children }) => {
 
     // Theory CRUD
     const getArticle = async () => {
-        const result = await axios.get('http://localhost:8000/api/article')
+        const result = await axios.get('https://ar-filter-frequency-app.herokuapp.com/api/article')
         const data = result.data.results
         setArticleList(data.map(article => {
             return {
@@ -50,7 +50,7 @@ export const ArticleContextProvider = ({ children }) => {
         data.append("category", article.category)
         data.append("description", articleDescription)
         data.append("image", image, image.name)
-        axios.post(`http://localhost:8000/api/article/create`, data,
+        axios.post(`https://ar-filter-frequency-app.herokuapp.com/api/article/create`, data,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
 
@@ -64,7 +64,7 @@ export const ArticleContextProvider = ({ children }) => {
 
     // get module value so it can be updated
     const editArticle = async (id) => {
-        const result = await axios.get(`http://localhost:8000/api/article/${id}`, {headers: {"Authorization" : "Bearer "+ token}})
+        const result = await axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/article/${id}`, {headers: {"Authorization" : "Bearer "+ token}})
         const data = result.data.data;
         setArticle({
             title: data.title,
@@ -82,13 +82,13 @@ export const ArticleContextProvider = ({ children }) => {
         dataNew.set("category", article.category)
         dataNew.set("description", articleDescription)
         dataNew.set("image", image, image.name)
-        axios.put(`http://localhost:8000/api/article/${id}/update`, dataNew, 
+        axios.put(`https://ar-filter-frequency-app.herokuapp.com/api/article/${id}/update`, dataNew, 
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }
     
     const deleteArticle = (articleId) => {
-        axios.delete(`http://localhost:8000/api/article/${articleId}`,
+        axios.delete(`https://ar-filter-frequency-app.herokuapp.com/api/article/${articleId}`,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }

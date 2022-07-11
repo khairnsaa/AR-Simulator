@@ -37,7 +37,7 @@ export const ModuleContextProvider = ({ children }) => {
     
     // ---------- Module CRUD ----------
     const getModule = async () => {
-        const result = await axios.get('http://localhost:8000/api/module')
+        const result = await axios.get('https://ar-filter-frequency-app.herokuapp.com/api/module')
         const data = result.data.results
         setModuleList(data.map(modul => {
             return {
@@ -49,7 +49,7 @@ export const ModuleContextProvider = ({ children }) => {
     }
 
     const getDetailModule = (modulId) => {
-        axios.get(`http://localhost:8000/api/module/${modulId}`, 
+        axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/module/${modulId}`, 
         {headers: {"Authorization" : "Bearer "+ token, 'Access-Control-Allow-Origin': '*'}})
         .then(res => {
             const dataModul = res.data.results
@@ -99,7 +99,7 @@ export const ModuleContextProvider = ({ children }) => {
     }
 
     const addModule = () => {
-        axios.post('http://localhost:8000/api/module/create', {
+        axios.post('https://ar-filter-frequency-app.herokuapp.com/api/module/create', {
             moduleNumber: module.moduleNumber,
             title: module.moduleTitle,
         }, {headers: {"Authorization" : `Bearer ${token}`}})
@@ -110,7 +110,7 @@ export const ModuleContextProvider = ({ children }) => {
 
     // get module value so it can be updated
     const editModule = async (modulId) => {
-        const result = await axios.get(`http://localhost:8000/api/module/${modulId}`, 
+        const result = await axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/module/${modulId}`, 
         {headers: {"Authorization" : "Bearer "+ token, 'Access-Control-Allow-Origin': '*'}})
         const data = result.data.results
         
@@ -123,14 +123,14 @@ export const ModuleContextProvider = ({ children }) => {
 
     // updating module
     const updateModule = async(moduleId) => {
-        axios.put(`http://localhost:8000/api/module/${moduleId}/update`, {
+        axios.put(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/update`, {
             title: module.moduleTitle,
         }, {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }
 
     const deleteModule = (moduleId) => {
-        axios.delete(`http://localhost:8000/api/module/${moduleId}`,
+        axios.delete(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}`,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }
@@ -149,7 +149,7 @@ export const ModuleContextProvider = ({ children }) => {
     }
 
     const getDetailTheory = (theoryId) => {
-        axios.get(`http://localhost:8000/api/module/${theoryId}/get-theory`)
+        axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/module/${theoryId}/get-theory`)
         .then(data => {
             let result = data.data.result
             setTheory({title: result.title})
@@ -173,7 +173,7 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("moduleNumber", modulNumber)
         data.append("moduleTitle", modulTitle)
         data.append("image", image, image.name)
-        axios.patch(`http://localhost:8000/api/module/${moduleId}/create-theory`, data,
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/create-theory`, data,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
 
@@ -189,7 +189,7 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("title", theory.title)
         data.append("description", theoryDescription)
         data.append("image", image, image.name)
-        axios.patch(`http://localhost:8000/api/module/${theoryId}/update-theory`, data,
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${theoryId}/update-theory`, data,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }
@@ -198,7 +198,7 @@ export const ModuleContextProvider = ({ children }) => {
     const deleteTheory = (moduleId, theoryId) => {
         // api/module/:id/:theoryId/delete-theory
         console.log(token)
-        axios.patch(`http://localhost:8000/api/module/${moduleId}/${theoryId}/delete-theory`, {}, {
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/${theoryId}/delete-theory`, {}, {
             headers: {"authorization": `Bearer ${token}`}
         }).catch(err => console.log(err))
     }
@@ -221,7 +221,7 @@ export const ModuleContextProvider = ({ children }) => {
     const handleModel = (e) => setlabModel(e.target.files[0])
 
     const getDetailLab = (labId) => {
-        axios.get(`http://localhost:8000/api/module/${labId}/get-lab`)
+        axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/module/${labId}/get-lab`)
         .then(data => {
             let result = data.data.result
             setLab({title: result.title})
@@ -240,7 +240,7 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("moduleTitle", modulTitle)
         data.append("thumbnail", image, image.name)
         data.append("model", labModel, labModel.name)
-        axios.patch(`http://localhost:8000/api/module/${moduleId}/create-lab`, data,
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/create-lab`, data,
         {headers: {"Authorization" : `Bearer ${token}`, 'Access-Control-Allow-Origin': '*'}})
         .catch(err => console.log(err))
         setLabNum(labNum + 1)
@@ -251,14 +251,14 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("title", lab.title)
         data.append("description", theoryDescription)
         data.append("image", image, image.name)
-        axios.patch(`http://localhost:8000/api/module/${labId}/update-lab`, data,
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${labId}/update-lab`, data,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
     }
     
     const deleteLab = (moduleId, labId) => {
         console.log(labId)
-        axios.patch(`http://localhost:8000/api/module/${moduleId}/${labId}/delete-lab`, {}, {
+        axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/${labId}/delete-lab`, {}, {
             headers: {"authorization": `Bearer ${token}`}
         }).catch(err => console.log(err))
     }
