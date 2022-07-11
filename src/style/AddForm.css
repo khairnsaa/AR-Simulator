@@ -1,0 +1,97 @@
+/* AdminNavbar.js */
+.admin-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.8rem 2.5rem;
+}
+
+.logo-menu{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo { 
+    width: 4rem; 
+    margin-right: 2.5rem;
+}
+
+.navbar-logo img { width: 100%;}
+
+.nav-link-edited{
+    text-decoration: none;
+    color: var(--text-light);
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+.logout-btn{
+    border-radius: 6rem !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem !important;
+}
+
+/* AddForm.js */
+
+.admin-form-container{ 
+    justify-content: flex-start; 
+    align-items: flex-start;
+    padding-bottom: 2rem;
+}
+
+.admin-form-container h1{ 
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center; 
+    margin: 2rem 0;
+}
+
+.admin-form-container form{
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.admin-form-container form h3{ font-size: 1rem;}
+
+.kategori-section{ 
+    display: flex; 
+    align-items: center;
+    margin: 1.5rem 0;
+}
+  
+.kategori-group input{ 
+    margin-left: 1rem;
+}
+
+.radio-kategori{ margin-right: 0.4rem;}
+
+.input-judul{
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.input-kategori{
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.add-image label, .add-model label{ font-size: 1rem;}
+
+.input-image, .input-model{ margin: 1.5rem 0.5rem;}
+
+
+.input-isi{
+    width: 100%;
+    height: 50vh;
+    border: 0.12rem solid var(--text-light) !important; 
+    padding: 0.7rem 1rem;
+}
+
+.add-form-btn{
+    border-radius: 6rem !important;
+    width: 15vw;
+    font-size: 0.9rem;
+}

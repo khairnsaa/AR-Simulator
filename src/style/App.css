@@ -1,0 +1,82 @@
+@import url('./ARStyle.css');
+@import url('./AdminPanelLogin.css');
+@import url('./AddForm.css');
+@import url('./ListArtikelMateri.css');
+@import url('./AdminHomePage.css');
+@import url('./ModulPage.css');
+
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --main-dark: #172A3A;
+  --secondary-dark: #3A678D;
+  --accent-dark: #09BC8A;
+  --text-dark: #fafafa;
+  --main-light: #DCEFFF;
+  --secondary-light: #67B3B8;
+  --accent-light: #36827F;
+  --text-light: #1c1c1c;
+  --warning: #E7560D;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-light);
+}
+
+.input-text{
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;  
+  font-family: 'Inter', sans-serif;
+  border-bottom: 0.12rem solid var(--text-light);  
+}
+
+.input-text::placeholder{
+  color: var(--text-light);
+  opacity: .8;
+}
+
+.btn-edited{
+  background-color: var(--accent-light);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  padding: 0.8rem 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+}
+
+.btn-edited:hover{ cursor: pointer;}
+
+/* HOME.JS */
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-light);
+  min-height: 100vh;
+}
+
+.route-btn{
+  margin: 0.7rem 0;
+  width: 40vw;
+  background-color: var(--accent-light);
+  color: var(--text-dark);
+  text-align: center;
+  text-decoration: none;
+}

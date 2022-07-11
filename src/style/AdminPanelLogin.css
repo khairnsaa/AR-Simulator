@@ -1,0 +1,42 @@
+/* Admin Panel Login */
+.admin-login-container{
+    min-height: 100vh;
+    padding-bottom: 4rem;
+}
+
+.admin-login-container, .login-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{ margin-top: 3rem;}
+
+.login-form input{
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    width: 60vh;
+}
+
+.login-form input::placeholder{
+    background-image: url('../asset/icons/user.svg');
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: contain;
+    padding-left: 2rem;
+}
+
+input.password::placeholder{ background-image: url('../asset/icons/password.svg');}
+
+.login-btn{
+    width: 60vh;
+    margin: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login-btn:hover{
+    cursor: pointer;
+    background-color: #285f5d;
+}

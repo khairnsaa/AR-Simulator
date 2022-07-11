@@ -1,0 +1,23 @@
+.card-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80vw;
+    margin: auto;
+    min-height: 70vh;
+}
+
+.card-edited{
+    display: inline-block;
+    background-color: var(--accent-light);
+    padding: 5rem 3rem;
+    border-radius: 0.15rem;
+    text-align: center;
+}
+
+.add-article{ margin-right: 1rem;}
+
+.add-link{
+    color: var(--text-dark);
+    text-decoration: none;
+}
