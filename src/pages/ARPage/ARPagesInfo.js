@@ -69,7 +69,9 @@ const ARPages = () => {
         <div>
             <div className="ar-container">
             {
+                // Apabila variabel lablist memiliki jumlah lebih dari 1 maka akan ditampilkan data dari lablist
                 labList.length !== 0 ?
+                // apabila id lab yang dibuka pengguna sama dengan id lab yang tersedia dari API maka data yang memiliki Id tersebut akan ditampilkan
                 labList.map(lab => lab.labId === labId ? (
                     <div className="ar-content">
                         <h1>{lab.title}</h1>
