@@ -16,7 +16,7 @@ const AdminNavbar = () => {
         <nav className="admin-navbar">
             <div className="logo-menu">
                 <div className="navbar-logo">
-                    <Link to='/adminHomepage'><img src={logoAplikasi} alt="Filter Frekuensi AR Simulator" /></Link>
+                    <Link to='/'><img src={logoAplikasi} alt="Filter Frekuensi AR Simulator" /></Link>
                 </div>
                 <div className="menu-list">
                     <Link to='/listArtikel' className="nav-link-edited">List Artikel</Link>

@@ -13,7 +13,6 @@ import AddLabForm from './pages/AdminPage/AddLabForm';
 
 // AR PAGES
 import ARPagesInfo from './pages/ARPage/ARPagesInfo';
-import Cookies from "js-cookie";
 import LoginRouter from "./LoginRouter";
 
 const Router = () => {

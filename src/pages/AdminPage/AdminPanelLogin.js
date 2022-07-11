@@ -10,7 +10,7 @@ const AdminPanelLogin = () => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        axios.post(`http://localhost:8010/api/user/login`,{ 
+        axios.post(`https://ar-filter-frequency-app.herokuapp.com/api/user/login`,{ 
             email: data.get('email'), password: data.get('password')
         }).then(res => {
             const username = res.data.username
