@@ -49,11 +49,15 @@ export const ModuleContextProvider = ({ children }) => {
     }
 
     const getDetailModule = (modulId) => {
+        // library axios digunakan untuk mengambil api dari link yang ada
         axios.get(`https://ar-filter-frequency-app.herokuapp.com/api/module/${modulId}`, 
         {headers: {"Authorization" : "Bearer "+ token, 'Access-Control-Allow-Origin': '*'}})
         .then(res => {
             const dataModul = res.data.results
+            // setelah data dari API telah diambil maka dari data tersebut datanya akan disimpan sesuai variable masing - masing
+            // apabila datanya adalah modul maka akan disimpan pada variabel module
             setModule(dataModul)
+             // apabila datanya adalah teori / materi maka akan disimpan pada variabel theory
             setTheoryList(dataModul.theory.map(materi => {
                 return {
                     theoryNumber: materi.theoryNumber,
@@ -67,6 +71,7 @@ export const ModuleContextProvider = ({ children }) => {
 
                 }
             }))
+             // apabila datanya adalah lab maka akan disimpan pada variabel lab
             setLabList(dataModul.lab.map(lab => {
                 return {
                     labNumber: lab.labNumber,
@@ -99,10 +104,11 @@ export const ModuleContextProvider = ({ children }) => {
     }
 
     const addModule = () => {
+        // library axios digunakan untuk membantu menambahkan materi dengan method post ke URL API yang tertulis
         axios.post('https://ar-filter-frequency-app.herokuapp.com/api/module/create', {
             moduleNumber: module.moduleNumber,
             title: module.moduleTitle,
-        }, {headers: {"Authorization" : `Bearer ${token}`}})
+        }, {headers: {"Authorization" : `Bearer ${token}`}}) //untuk menambahkan modul dibutuhkan bearer token
         .catch(err => console.log(err))
         setModuleNum(moduleNum + 1)
         setModule({moduleTitle: ''})
@@ -164,6 +170,7 @@ export const ModuleContextProvider = ({ children }) => {
         setTheoryDescription(str)
     }
 
+    // library axios digunakan untuk membantu menambahkan materi dengan method post ke URL API yang tertulis
     const addTheory = (moduleId, modulNumber, modulTitle) => {
         // http://localhost:8000/api/module/:moduleId/create-theory
         const data = new FormData()
@@ -174,7 +181,7 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("moduleTitle", modulTitle)
         data.append("image", image, image.name)
         axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/create-theory`, data,
-        {headers: {"Authorization" : `Bearer ${token}`}})
+        {headers: {"Authorization" : `Bearer ${token}`}}) //untuk menambahkan materi dibutuhkan bearer token
         .catch(err => console.log(err))
 
         setTheory({title: '',})
@@ -192,6 +199,10 @@ export const ModuleContextProvider = ({ children }) => {
         axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${theoryId}/update-theory`, data,
         {headers: {"Authorization" : `Bearer ${token}`}})
         .catch(err => console.log(err))
+
+        setTheory({title: '',})
+        setTheoryDescription('')
+        setImage(null)
     }
 
 
@@ -244,6 +255,11 @@ export const ModuleContextProvider = ({ children }) => {
         {headers: {"Authorization" : `Bearer ${token}`, 'Access-Control-Allow-Origin': '*'}})
         .catch(err => console.log(err))
         setLabNum(labNum + 1)
+
+        setLab({title: '',})
+        setTheoryDescription('')
+        setImage(null)
+        setlabModel(null)
     }
 
     const updateLab = (labId) => {
@@ -252,12 +268,17 @@ export const ModuleContextProvider = ({ children }) => {
         data.append("description", theoryDescription)
         data.append("image", image, image.name)
         axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${labId}/update-lab`, data,
-        {headers: {"Authorization" : `Bearer ${token}`}})
+        {headers: {"Authorization" : `Bearer ${token}`, 'Access-Control-Allow-Origin': '*'}})
         .catch(err => console.log(err))
+
+        setLab({title: ''})
+        setTheoryDescription('')
+        setImage(null)
+        setlabModel(null)
     }
     
     const deleteLab = (moduleId, labId) => {
-        console.log(labId)
+        // untuk menghapus lab dibutuhkan 2 parameter yaitu id modul dimana lab itu berada dan id dari lab itu sendiri
         axios.patch(`https://ar-filter-frequency-app.herokuapp.com/api/module/${moduleId}/${labId}/delete-lab`, {}, {
             headers: {"authorization": `Bearer ${token}`}
         }).catch(err => console.log(err))

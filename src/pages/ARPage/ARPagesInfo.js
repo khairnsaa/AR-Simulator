@@ -60,6 +60,7 @@ const ARPages = () => {
     }
     
     const checkARSupport = async (model) => {
+        // apabila browser yang digunakan memiliki fungsi navigator.xr dan apabila fungsi itu disupport maka akan terbuka sesi AR, apabila sesi AR tidak di support akan mendapatkan pemberitahuan.
         const isArSessionSupported = navigator.xr && navigator.xr.isSessionSupported && await navigator.xr.isSessionSupported("immersive-ar");
         if (isArSessionSupported) activateAR(model)
         else alert('kamera hp kamu gak support AR :\'(')
@@ -82,6 +83,7 @@ const ARPages = () => {
                             <h2>susunan rangkaian pada lab ini</h2>
                             <div className="canvas-container"></div>
                         </div>
+                        {/* apabila pengguna memencet tombol Start AR maka perangkat yang digunakan pengguna akan di cek terlebih dahulu apakah sudah support untuk AR atau belum */}
                         <button onClick={() => checkARSupport(lab.modelAR)} className='ar-btn btn-edited'>Start AR</button>
                     </div>
                 ) : <></>)
@@ -99,11 +101,13 @@ const ARPages = () => {
             <div className="widgets">
                 {/* Navigation */}
                 <div className="navigation">
-
+                    {/* barisan pertama dari kumpulan widget berisi dari 2 buah tombol */}
                     <div className="top-nav">
+                        {/* tombol run untuk menjalankan rangkaian filter */}
                         <button style={{"marginRight": "0.5rem"}} className="run-btn btn-edited ar-session-btn">
                             <img src={runIcon} alt="" />
                         </button>
+                        {/* popup akan tampul pada saat user memencet tombol Hz yang berfungsi untuk mengganti = ganti parameter yang tersedia */}
                         <PopupInput 
                             drawAndCapture={drawAndCapture}   
                             indikatorValue = {indikatorValue}
@@ -112,20 +116,24 @@ const ARPages = () => {
                             setIndikatorValue = {setIndikatorValue}
                         />   
                     </div>
+                    {/* barisan kedua dari kumpulan widget berisi dari 3 buah tombol */}
                     <div className="bottom-nav">
+                        {/* tombol rotate left untuk memutar rangkaian kearah kiri */}
                         <button className='rotate-btn rotate-left btn-edited ar-session-btn'>
                             <img src={rotateLeftIcon} alt="rotate left" />
                         </button>
+                        {/* tombol place untuk meletakkan rangkaian di tempat yang diinginkan */}
                         <button className='place-btn btn-edited ar-session-btn'>
                             <img src={placeAR} alt="place" />
                         </button>
+                        {/* tombol rotate right untuk memutar rangkaian kearah kanan */}
                         <button className='rotate-btn rotate-right btn-edited ar-session-btn'>
                             <img src={rotateRightIcon} alt="rotate right" />
                         </button>
                     </div>
                 </div>
 
-                {/* close btn */}
+                {/* close btn untuk menutup sesi AR*/}
                 <button className='close-btn btn-edited ar-session-btn'>
                     <img src={closeIcon} alt="close" />
                 </button>

@@ -36,12 +36,14 @@ const AdminPanelListMateri = () => {
             <div className="list-container">
                 <h1 className="list-title">List Modul</h1>
                 <div className="add-module-form">
+                    {/* Form untuk menambah modul baru */}
                     <form>
                         <input type="text" className="input-text add-module-input" value={module.moduleTitle} onChange={handleChangeModule} name='moduleTitle' placeholder="Nama Modul" />
                         <button className="btn-edited add-module-btn" onClick={handleSubmit}>Tambah Modul</button>
                     </form>
                 </div>
                 <div>
+                    {/* apabila modul sudah ditambahkan datanya akan ditampilkan pada layar*/}
                     {moduleList && moduleList.map(module => (
                         <ModuleCard 
                             key={module.moduleTitle} 

@@ -28,6 +28,7 @@ const AdminPanelLogin = () => {
                 <img src={logoAplikasi} alt="logo aplikasi filter frekuensi AR simulator" />
             </div>
             <div className="login-form">
+                {/* form login memiliki 2 buah input yaitu email dan password dan apabila form disubmit akan menjalankan fungsi handleSubmit */}
                 <form onSubmit={handleSubmit}>
                     <input type="text" className='input-text nama' placeholder='Email' name="email" />
                     <input type="password" className='input-text password' placeholder='Password' name="password" />

@@ -34,7 +34,7 @@ const AddLabForm = () => {
 
     useEffect(() => {
         getDetailModule(id)
-        getDetailLab(labId)
+        if (labId !== undefined) getDetailLab(labId)
     }, [])
 
     return (

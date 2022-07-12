@@ -31,7 +31,7 @@ const ModulePage = () => {
                 <div className="theory-list">
                     <div className="title-btn">
                         <h3>Theory</h3>
-                        <Link to={`/addTheoryForm/${id}`} className="btn-edited add-btn">Tambah Materi</Link>
+                        <Link to={`/addTheoryForm/${id}`} onClick={console.log(id)} className="btn-edited add-btn">Tambah Materi</Link>
                     </div>
                     {theoryList.map(theory => (
                         <div className="list" key={theory.title}>

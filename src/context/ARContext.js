@@ -48,8 +48,9 @@ export const ARContextProvider = ({ children }) => {
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
 
-        // create new AR session;
+        // create new AR session
         session = await navigator.xr.requestSession('immersive-ar', {
+            // requiredFeatures merupakan jenis fitur apa saja yang akan digunakan didalam AR session
             requiredFeatures: ['hit-test', 'dom-overlay'],
             domOverlay: {root: document.body}
         })
@@ -88,7 +89,9 @@ export const ARContextProvider = ({ children }) => {
 
         // load 3d model
         const loader = new GLTFLoader();
+        // memuat gambar marker yang disediakan dari immersive-web
         loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf" , gltf => {
+            // mengisi variable reticle dengan gambar yang sudah di load dan membuat visibilitynya menjadi false
             reticle = gltf.scene;
             reticle.visible = false;
             scene.add(reticle)
@@ -161,7 +164,9 @@ export const ARContextProvider = ({ children }) => {
         // place AR object
         document.querySelector('.place-btn').addEventListener('click', () => {
             if(reticle.visible){
+                // apabila gambar reticle sudah muncul maka visibility model 3d rangkaian pun akan diatur menjadi true
                 currentModel.visible = true;
+                // model 3d diberikan bayangan agar terlihat real
                 currentModel.castShadow = true
                 currentModel.position.setFromMatrixPosition(reticle.matrix);
             }
@@ -175,13 +180,18 @@ export const ARContextProvider = ({ children }) => {
         // run btn
         document.querySelector('.run-btn').addEventListener('click', () => {
             currentModel.children.map(plane => {
+                // apabila model yang muncul memiliki objek bernama Plane_frequency001 maka akan menjalankan funtion addImageFreq() yang akan mengembalikan nilai berupa gambar dari nilai frekuensi
                 if( plane.name === 'Plane_frequency001') {
                     plane.material = addImageFreq()
                     plane.material.visible = true
-                } else if( plane.name === 'Plane_output001') {
+                } 
+                // apabila model yang muncul memiliki objek bernama Plane_output001 maka akan menjalankan funtion addImage() yang akan mengembalikan nilai berupa gambar dari gelombang output
+                else if( plane.name === 'Plane_output001') {
                     plane.material = addImage()
                     plane.material.visible = true
-                } else if( plane.name === "Plane_response001") {
+                } 
+                // apabila model yang muncul memiliki objek bernama Plane_response001 maka akan menjalankan funtion addImageResponse() yang akan mengembalikan nilai berupa gambar dari respon rangkaian filter
+                else if( plane.name === "Plane_response001") {
                     plane.material = addImageResponse()
                     plane.material.visible = true
                 }
@@ -190,6 +200,7 @@ export const ARContextProvider = ({ children }) => {
         })
 
         document.querySelector('.close-btn').addEventListener('click', () => {
+            // apabila close-btn dipencet maka sesi AR akan ditutup dan semua widget didalam sesi AR akan dihilangkan dari layar perangkat
             session.end();
             document.querySelector('.ar-container').classList.remove('ar')
             document.querySelector('.widgets').classList.remove('ar')
